@@ -21,7 +21,8 @@ Describe the purpose of your survey: The survey focuses on the electorate and it
 Describe your target population, sampling frame, sampling units, and observational units:
 target population: Canadians who have the age to vote, meet the legal requirements to vote, and are registered voters with the party, from all provinces and territories.
 sampling units: all respondents who qualified for the questionnaire and return the answers in the time frame given, as the electoral event is one month away.
-sampling frame: voters who are selected to answer the questionnaire.
+observational units: the individuals within the survey population who recieve the questionnaire.
+sampling frame: the list of all voters' emails who are qualified for the questionnaire.
 sampling strategy: the campaign team selects 5% voters from their national database based on postal code (urban and rural areas), age (4 different age groups) and gender. Once the strata are created, 15% of answers are randomly selected from each strata to create the sample and analyze the results. 
 ```
 
