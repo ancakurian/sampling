@@ -14,8 +14,6 @@ Alter the code so that it is reproducible. Describe the changes you made to the 
 
 ```
 Please write your explanation here...
-
-```
 Population: the community of 1000 people which, in a given time period, has attended exactly one event (one of the 2 weddings or one of the 80 brunches)
 Frame population: the guests attending the events (200 wedding guests + 800 brunch attendees).
 Sample population: 10% of attendees.
@@ -26,6 +24,8 @@ Once the strata are created, the simple random sampling is applied, where 10% of
 The graph from the original post is different than the one generated when running the code. The observed proportion and true proportion overlap greatly in the graph generated, while the graph in the original blog post shows the two observations being very different. The spread of the observed proportion is significantly higher than the spread of data in true proportion. 
 
 When running the same code multiple times, the output is not identical. There is no parameter to ensure reproducibility. The graph maintains the general shape of the data, but the values vary slightly with each reiteration of the code.
+```
+
 
 
 A function is used for reproducibility of the script file (random.seed(42)).
@@ -34,12 +34,25 @@ A function is used for reproducibility of the script file (random.seed(42)).
 # Randomness function
 
 import random
+import numpy as np
+import pandas as pd
 
 random.seed(42)
 np.random.seed(42)
 
-results = [simulate_event(m) for m in range(1000)]
+def simulate_event(m):
+    infections = random.randint(0, 100)
+    traces = np.random.poisson(5)
+    return infections, traces
+
+# Run the simulation for 5000 iterations
+results = [simulate_event(m) for m in range(5000)]
+
 props_df = pd.DataFrame(results, columns=["Infections", "Traces"])
+
+print(props_df.head())
+
+
 
 Running the code multiple times gives the same plot each time. No values change anymore, unlike the code without the random state. 
 
